@@ -5,7 +5,7 @@ function connect() {
 
     ws = new WebSocket("ws://localhost:8080/hello");
 
-//This function will called everytime new message arrives
+
     ws.onmessage = function (e) {
         console.log(e);
         printMessage(e.data);
@@ -29,7 +29,7 @@ function printMessage(data) {
 
 //This function handles functionality of sending the message to websocket
 function sendToGroupChat() {
-    if (ws == undefined) return;
+    if (ws === undefined) return;
     let messageText = document.getElementById("message").value;
     document.getElementById("message").value = "";
     let name = document.getElementById("name").value;
@@ -41,6 +41,7 @@ function sendToGroupChat() {
     let newMessage = document.createElement("div");
     newMessage.innerHTML = messageText + " : " + currentUser;
     newMessage.className = "outgoing-message";
+    let messages = document.getElementById("messages");
     messages.appendChild(newMessage);
 
 //In-Built functions Send is used with object we created
